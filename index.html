@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Калькулятор размера выборки</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">UX Research Tool</p>
+        <h1>Калькулятор размера <span>выборки</span></h1>
+        <p class="subtitle">Для опросов, CSI и предварительной оценки аудитории A/B-тестов</p>
+      </div>
+
+      <div class="hero-note">
+        Быстро считаем выборку — меньше споров, больше данных
+      </div>
+    </section>
+
+    <section class="calculator-layout">
+      <form class="panel controls">
+        <div class="section-label">Параметры исследования</div>
+
+        <div class="field-card">
+          <div class="field-head">
+            <label>Тип исследования</label>
+          </div>
+
+          <div class="segmented" id="researchType">
+            <button type="button" class="segment active" data-type="Опрос">Опрос</button>
+            <button type="button" class="segment" data-type="CSI">CSI</button>
+            <button type="button" class="segment" data-type="A/B-тест">A/B-тест</button>
+          </div>
+        </div>
+
+        <div class="field-card">
+          <div class="field-head">
+            <label for="population">Размер генеральной совокупности</label>
+            <button
+              type="button"
+              class="hint"
+              data-tooltip="Сколько всего людей входит в исследуемую группу: клиенты банка, сотрудники конкретной роли, участники процесса"
+            >?</button>
+          </div>
+
+          <div class="input-wrap">
+            <input id="population" type="text" value="10 000" inputmode="numeric" />
+            <span>чел.</span>
+          </div>
+        </div>
+
+        <div class="field-card">
+          <div class="field-head">
+            <label>Уровень доверия</label>
+            <button
+              type="button"
+              class="hint"
+              data-tooltip="Показывает, насколько можно доверять результатам исследования и считать, что выборка отражает поведение всей исследуемой группы"
+            >?</button>
+          </div>
+
+          <div class="segmented" id="confidence">
+            <button type="button" class="segment" data-confidence="90">90%</button>
+            <button type="button" class="segment active" data-confidence="95">95%</button>
+            <button type="button" class="segment" data-confidence="99">99%</button>
+          </div>
+        </div>
+
+        <div class="field-card">
+          <div class="field-head">
+            <label for="margin">Допустимая погрешность</label>
+            <strong class="value-pill" id="marginValue">5%</strong>
+          </div>
+
+          <input id="margin" type="range" min="1" max="15" value="5" />
+
+          <div class="range-scale">
+            <span>1%</span>
+            <span>15%</span>
+          </div>
+
+          <p class="recommendation">
+            3–5% — точные замеры · 5–10% — стандартный UX/продуктовый замер · 10–15% — быстрый ориентир
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-head">
+            <label for="proportion">Ожидаемая доля признака</label>
+            <strong class="value-pill" id="proportionValue">50%</strong>
+          </div>
+
+          <input id="proportion" type="range" min="1" max="99" value="50" />
+
+          <div class="range-scale">
+            <span>1%</span>
+            <span>99%</span>
+          </div>
+
+          <p class="muted">Если заранее неизвестно, оставьте 50%</p>
+        </div>
+
+        <div class="field-card mood-card">
+          <div class="field-head">
+            <label for="mood">Насколько вы готовы провести исследование прямо сейчас?</label>
+            <strong class="value-pill" id="moodValue">7</strong>
+          </div>
+
+          <input id="mood" type="range" min="0" max="10" step="1" value="7" />
+
+          <div class="mood-scale">
+            <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+          </div>
+
+          <div class="range-scale">
+            <span>совсем не хочется</span>
+            <span>дайте уже респондентов</span>
+          </div>
+        </div>
+      </form>
+
+      <aside class="results">
+        <div class="result-card">
+          <div class="result-content">
+            <p class="result-label">Необходимый размер выборки</p>
+            <div class="sample-number"><span id="sampleSize">370</span></div>
+            <p class="respondents" id="respondentsLabel">респондентов</p>
+          </div>
+        </div>
+
+        <div class="summary-card">
+          <h2>Параметры расчёта</h2>
+
+          <div class="summary-row">
+            <span>Тип исследования</span>
+            <strong id="summaryType">Опрос</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Уровень доверия</span>
+            <strong id="summaryConfidence">95%</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Допустимая погрешность</span>
+            <strong id="summaryMargin">5%</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Ожидаемая доля признака</span>
+            <strong id="summaryProportion">50%</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Генеральная совокупность</span>
+            <strong id="summaryPopulation">10 000</strong>
+          </div>
+
+          <p class="type-note" id="typeNote">
+            Для опроса используется классическая формула расчёта выборки для доли
+          </p>
+        </div>
+
+        <div class="mood-message" id="moodMessage">
+          <div>
+            <h2>Отлично! Вы настроены на результат</h2>
+            <p>С таким настроем исследование точно принесёт полезные инсайты</p>
+          </div>
+        </div>
+
+        <details class="formula-card">
+          <summary>Формула расчёта</summary>
+
+          <div id="formulaText">
+            <p><strong>Для опроса:</strong></p>
+            <p>n₀ = (Z² × p × (1 − p)) / e²</p>
+            <p>n = n₀ / (1 + (n₀ − 1) / N)</p>
+          </div>
+
+          <div class="formula-explain">
+            <p><strong>N</strong> — размер генеральной совокупности</p>
+            <p><strong>n₀</strong> — предварительный размер выборки без поправки на размер совокупности</p>
+            <p><strong>n</strong> — итоговый размер выборки</p>
+            <p><strong>Z</strong> — коэффициент уровня доверия: 90% = 1.645, 95% = 1.96, 99% = 2.576</p>
+            <p><strong>p</strong> — ожидаемая доля признака</p>
+            <p><strong>e</strong> — допустимая погрешность</p>
+          </div>
+        </details>
+      </aside>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
