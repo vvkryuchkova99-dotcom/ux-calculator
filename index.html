@@ -11,56 +11,56 @@
   <main class="page">
     <section class="hero">
       <div class="hero-text">
-        <div class="topbar"><p class="eyebrow" id="toolLabel">UX Research Tool</p><button class="lang-switch" id="langSwitch">EN</button></div>
-        <h1><span id="titleMain">Калькулятор размера</span> <span id="titleAccent">выборки</span></h1>
-        <p class="subtitle"><span id="subtitle">Для опросов, CSI и предварительной оценки аудитории A/B-тестов</span></p>
+        <div class="topbar">
+          <p class="eyebrow" data-i18n="toolLabel">UX Research Tool</p>
+          <button class="lang-switch" id="langSwitch" type="button">EN</button>
+        </div>
+
+        <h1>
+          <span data-i18n="titleMain">Калькулятор размера</span>
+          <span data-i18n="titleAccent">выборки</span>
+        </h1>
+
+        <p class="subtitle" data-i18n="subtitle">Для опросов, CSI и A/B-тестов</p>
       </div>
 
-      <div class="hero-note">
-        <span id="heroNote">Быстро считаем выборку — меньше споров, больше данных</span>
+      <div class="hero-note" data-i18n="heroNote">
+        Быстро считаем выборку — меньше споров, больше данных
       </div>
     </section>
 
     <section class="calculator-layout">
       <form class="panel controls">
-        <div class="section-label">Параметры исследования</div>
+        <div class="section-label" data-i18n="paramsTitle">Параметры исследования</div>
 
         <div class="field-card">
           <div class="field-head">
-            <label>Тип исследования</label>
+            <label data-i18n="researchType">Тип исследования</label>
           </div>
 
           <div class="segmented" id="researchType">
-            <button type="button" class="segment active" data-type="Опрос">Опрос</button>
-            <button type="button" class="segment" data-type="CSI">CSI</button>
-            <button type="button" class="segment" data-type="A/B-тест">A/B-тест</button>
+            <button type="button" class="segment active" data-type="survey" data-i18n="survey">Опрос</button>
+            <button type="button" class="segment" data-type="csi">CSI</button>
+            <button type="button" class="segment" data-type="ab" data-i18n="abTest">A/B-тест</button>
           </div>
         </div>
 
         <div class="field-card">
           <div class="field-head">
-            <label for="population">Размер генеральной совокупности</label>
-            <button
-              type="button"
-              class="hint"
-              data-tooltip="Сколько всего людей входит в исследуемую группу: клиенты банка, сотрудники конкретной роли, участники процесса"
-            >?</button>
+            <label for="population" data-i18n="populationLabel">Размер генеральной совокупности</label>
+            <button type="button" class="hint" data-tooltip-key="populationHint" data-tooltip="Сколько всего людей входит в исследуемую группу: клиенты банка, сотрудники конкретной роли, участники процесса">?</button>
           </div>
 
           <div class="input-wrap">
             <input id="population" type="text" value="10 000" inputmode="numeric" />
-            <span>чел.</span>
+            <span data-i18n="peopleShort">чел.</span>
           </div>
         </div>
 
         <div class="field-card">
           <div class="field-head">
-            <label>Уровень доверия</label>
-            <button
-              type="button"
-              class="hint"
-              data-tooltip="Показывает, насколько можно доверять результатам исследования и считать, что выборка отражает поведение всей исследуемой группы"
-            >?</button>
+            <label data-i18n="confidenceLabel">Уровень доверия</label>
+            <button type="button" class="hint" data-tooltip-key="confidenceHint" data-tooltip="Показывает, насколько можно доверять результатам исследования и считать, что выборка отражает поведение всей исследуемой группы">?</button>
           </div>
 
           <div class="segmented" id="confidence">
@@ -72,7 +72,7 @@
 
         <div class="field-card">
           <div class="field-head">
-            <label for="margin">Допустимая погрешность</label>
+            <label for="margin" data-i18n="marginLabel">Допустимая погрешность</label>
             <strong class="value-pill" id="marginValue">5%</strong>
           </div>
 
@@ -83,14 +83,16 @@
             <span>15%</span>
           </div>
 
-          <p class="recommendation">
-            3-5% — точные замеры<br>5-10% — стандартный UX/продуктовый замер<br>10-15% — быстрый ориентир
+          <p class="recommendation" data-i18n-html="marginHint">
+            3-5% — точные замеры<br>
+            5-10% — стандартный UX/продуктовый замер<br>
+            10-15% — быстрый ориентир
           </p>
         </div>
 
         <div class="field-card">
           <div class="field-head">
-            <label for="proportion">Ожидаемая доля признака</label>
+            <label for="proportion" data-i18n="proportionLabel">Ожидаемая доля признака</label>
             <strong class="value-pill" id="proportionValue">50%</strong>
           </div>
 
@@ -101,12 +103,12 @@
             <span>99%</span>
           </div>
 
-          <p class="muted">Если заранее неизвестно, оставьте 50%</p>
+          <p class="muted" data-i18n="proportionHint">Если заранее неизвестно, оставьте 50%</p>
         </div>
 
         <div class="field-card mood-card">
           <div class="field-head">
-            <label for="mood">Насколько вы готовы провести исследование прямо сейчас?</label>
+            <label for="mood" data-i18n="moodLabel">Насколько вы готовы провести исследование прямо сейчас?</label>
             <strong class="value-pill" id="moodValue">7</strong>
           </div>
 
@@ -118,8 +120,8 @@
           </div>
 
           <div class="range-scale">
-            <span>совсем не хочется</span>
-            <span>дайте уже респондентов</span>
+            <span data-i18n="moodMin">совсем не хочется</span>
+            <span data-i18n="moodMax">дайте уже респондентов</span>
           </div>
         </div>
       </form>
@@ -127,69 +129,54 @@
       <aside class="results">
         <div class="result-card">
           <div class="result-content">
-            <p class="result-label">Необходимый размер выборки</p>
+            <p class="result-label" data-i18n="sampleSizeLabel">Необходимый размер выборки</p>
             <div class="sample-number"><span id="sampleSize">370</span></div>
             <p class="respondents" id="respondentsLabel">респондентов</p>
           </div>
         </div>
 
         <div class="summary-card">
-          <h2>Параметры расчёта</h2>
+          <h2 data-i18n="summaryTitle">Параметры расчёта</h2>
 
           <div class="summary-row">
-            <span>Тип исследования</span>
+            <span data-i18n="summaryType">Тип исследования</span>
             <strong id="summaryType">Опрос</strong>
           </div>
 
           <div class="summary-row">
-            <span>Уровень доверия</span>
+            <span data-i18n="summaryConfidence">Уровень доверия</span>
             <strong id="summaryConfidence">95%</strong>
           </div>
 
           <div class="summary-row">
-            <span>Допустимая погрешность</span>
+            <span data-i18n="summaryMargin">Допустимая погрешность</span>
             <strong id="summaryMargin">5%</strong>
           </div>
 
           <div class="summary-row">
-            <span>Ожидаемая доля признака</span>
+            <span data-i18n="summaryProportion">Ожидаемая доля признака</span>
             <strong id="summaryProportion">50%</strong>
           </div>
 
           <div class="summary-row">
-            <span>Генеральная совокупность</span>
+            <span data-i18n="summaryPopulation">Генеральная совокупность</span>
             <strong id="summaryPopulation">10 000</strong>
           </div>
 
-          <p class="type-note" id="typeNote">
-            Для опроса используется классическая формула расчёта выборки для доли
-          </p>
+          <p class="type-note" id="typeNote"></p>
         </div>
 
         <div class="mood-message" id="moodMessage">
           <div>
-            <h2>Отлично! Вы настроены на результат</h2>
-            <p>С таким настроем исследование точно принесёт полезные инсайты</p>
+            <h2></h2>
+            <p></p>
           </div>
         </div>
 
         <details class="formula-card">
-          <summary>Формула расчёта</summary>
-
-          <div id="formulaText">
-            <p><strong>Для опроса:</strong></p>
-            <p>n₀ = (Z² × p × (1 − p)) / e²</p>
-            <p>n = n₀ / (1 + (n₀ − 1) / N)</p>
-          </div>
-
-          <div class="formula-explain">
-            <p><strong>N</strong> — размер генеральной совокупности</p>
-            <p><strong>n₀</strong> — предварительный размер выборки без поправки на размер совокупности</p>
-            <p><strong>n</strong> — итоговый размер выборки</p>
-            <p><strong>Z</strong> — коэффициент уровня доверия: 90% = 1.645, 95% = 1.96, 99% = 2.576</p>
-            <p><strong>p</strong> — ожидаемая доля признака</p>
-            <p><strong>e</strong> — допустимая погрешность</p>
-          </div>
+          <summary data-i18n="formulaTitle">Формула расчёта</summary>
+          <div id="formulaText"></div>
+          <div class="formula-explain" id="formulaExplain"></div>
         </details>
       </aside>
     </section>
