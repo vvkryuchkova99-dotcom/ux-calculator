@@ -248,3 +248,37 @@ document.querySelectorAll("#confidence .segment").forEach((button) => {
 });
 
 updateCalculator();
+
+
+const langSwitch = document.getElementById("langSwitch");
+
+let currentLang = "ru";
+
+const translations = {
+  ru: {
+    tool: "UX Research Tool",
+    titleMain: "Калькулятор размера",
+    titleAccent: "выборки",
+    subtitle: "Для опросов, CSI и предварительной оценки аудитории A/B-тестов",
+    heroNote: "Быстро считаем выборку — меньше споров, больше данных"
+  },
+  en: {
+    tool: "UX Research Tool",
+    titleMain: "Sample Size",
+    titleAccent: "Calculator",
+    subtitle: "For surveys, CSI and preliminary A/B-test audience estimation",
+    heroNote: "Calculate faster — argue less, research more"
+  }
+};
+
+langSwitch.addEventListener("click", () => {
+  currentLang = currentLang === "ru" ? "en" : "ru";
+
+  document.getElementById("toolLabel").textContent = translations[currentLang].tool;
+  document.getElementById("titleMain").textContent = translations[currentLang].titleMain;
+  document.getElementById("titleAccent").textContent = translations[currentLang].titleAccent;
+  document.getElementById("subtitle").textContent = translations[currentLang].subtitle;
+  document.getElementById("heroNote").textContent = translations[currentLang].heroNote;
+
+  langSwitch.textContent = currentLang === "ru" ? "EN" : "RU";
+});
